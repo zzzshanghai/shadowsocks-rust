@@ -14,7 +14,6 @@ apk --no-cache add shadowsocks-rust-ssserver
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 echo "Asia/Shanghai" > /etc/timezone
 chmod +x /usr/local/sbin/reboot
-chown -R root:root /root
 EOF
 
 EXPOSE 8388/tcp
