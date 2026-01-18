@@ -5,7 +5,7 @@ ARG ALPINE_VERSION=3.23.2
 FROM alpine:${ALPINE_VERSION}
 
 COPY reboot.sh /usr/local/sbin/reboot/
-COPY shadowsocks-rust/config.json /root/
+COPY config.json /root/
 
 RUN <<EOF
 set -eux
