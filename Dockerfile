@@ -4,21 +4,22 @@ ARG ALPINE_VERSION=3.23.2
 
 FROM alpine:${ALPINE_VERSION}
 
-COPY reboot.sh /usr/local/sbin/reboot/
-COPY config.json /root/
-
 RUN <<EOF
 set -eux
 apk update
 apk --no-cache add shadowsocks-rust-ssserver
+cat > /root/config.json <<ZZZ
+{
+    "server": "0.0.0.0",
+    "server_port": 8388,
+    "password": "${SHADOWSOCKS_PASSWORD}",
+    "method": "aes-256-gcm",
+    "timeout": 60,
+    "mode": "tcp_only"
+}
+ZZZ
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 echo "Asia/Shanghai" > /etc/timezone
-chmod +x /usr/local/sbin/reboot
-cat > /root/config.json <<ZZZ
-# 配置文件示例（单引号禁止变量替换）
-HOST = $HOSTNAME
-PORT = 8080
-ZZZ
 EOF
 
 EXPOSE 8388/tcp
