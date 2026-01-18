@@ -4,7 +4,6 @@ ARG ALPINE_VERSION=3.23.2
 
 FROM alpine:${ALPINE_VERSION}
 
-COPY reboot.sh /usr/local/sbin/
 COPY config.json /root/
 
 RUN <<EOF
@@ -13,7 +12,6 @@ apk update
 apk --no-cache add shadowsocks-rust-ssserver
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 echo "Asia/Shanghai" > /etc/timezone
-chmod +x /usr/local/sbin/reboot.sh
 EOF
 
 EXPOSE 8388/tcp
