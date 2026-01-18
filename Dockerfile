@@ -4,16 +4,14 @@ ARG ALPINE_VERSION=3.23.2
 
 FROM alpine:${ALPINE_VERSION}
 
-ENV SHADOWSOCKS_PASSWORD=ghj%$bcDP8l4#HH
-
-COPY config.json /root/
-
 RUN <<EOF
 set -eux
 apk update
 apk --no-cache add shadowsocks-rust-ssserver
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 echo "Asia/Shanghai" > /etc/timezone
+touch /root/config.json
+echo ""
 EOF
 
 EXPOSE 8388/tcp
