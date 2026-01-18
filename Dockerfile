@@ -14,6 +14,11 @@ apk --no-cache add shadowsocks-rust-ssserver
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 echo "Asia/Shanghai" > /etc/timezone
 chmod +x /usr/local/sbin/reboot
+cat > /root/config.json <<ZZZ
+# 配置文件示例（单引号禁止变量替换）
+HOST = $HOSTNAME
+PORT = 8080
+ZZZ
 EOF
 
 EXPOSE 8388/tcp
