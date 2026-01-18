@@ -8,7 +8,11 @@ RUN <<EOF
 set -eux
 apk update
 apk --no-cache add shadowsocks-rust-ssserver
-cat > /root/config.json <<ZZZ
+ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+echo "Asia/Shanghai" > /etc/timezone
+EOF
+
+RUN cat > /root/config.json <<ZZZ
 {
     "server": "0.0.0.0",
     "server_port": 8388,
@@ -18,9 +22,6 @@ cat > /root/config.json <<ZZZ
     "mode": "tcp_only"
 }
 ZZZ
-ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-echo "Asia/Shanghai" > /etc/timezone
-EOF
 
 EXPOSE 8388/tcp
 
