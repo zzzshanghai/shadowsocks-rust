@@ -1,1 +1,1 @@
-# shadowsocks-rust
+alpine+shadowsocks-rust
