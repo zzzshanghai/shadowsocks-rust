@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
 if [ "$(id -u)" -ne 0 ]; then
   echo "reboot: Need to be root"
