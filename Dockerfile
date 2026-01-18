@@ -4,6 +4,8 @@ ARG ALPINE_VERSION=3.23.2
 
 FROM alpine:${ALPINE_VERSION}
 
+ENV SHADOWSOCKS_PASSWORD=test
+
 COPY config.json /root/
 
 RUN <<EOF
