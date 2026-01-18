@@ -11,7 +11,7 @@ apk --no-cache add shadowsocks-rust-ssserver
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 echo "Asia/Shanghai" > /etc/timezone
 touch /root/config.json
-echo ""
+echo "{"server": "0.0.0.0", "server_port": 8388, "password": "$SHADOWSOCKS_PASSWORD", "method": "aes-256-gcm", "timeout": 60, "mode": "tcp_only"}" >> /root/config.json
 EOF
 
 EXPOSE 8388/tcp
