@@ -16,7 +16,6 @@ ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 echo "Asia/Shanghai" > /etc/timezone
 chmod +x /entrypoint.sh
 chmod +x /usr/local/sbin/reboot
-chmod +x /usr/bin/ssserver
 EOF
 
 EXPOSE 8388/tcp
