@@ -5,12 +5,11 @@ ARG ALPINE_VERSION=3.23.2
 FROM alpine:${ALPINE_VERSION}
 
 COPY entrypoint.sh /entrypoint.sh
-COPY softlevel /run/openrc/softlevel
-COPY reboot.sh /usr/local/sbin/reboot
-COPY shadowsocks-rust/ssserver /usr/bin
-COPY supervisord.conf /root/supervisord.conf
-COPY shadowsocks-rust/config.json /root/shadowsocks-rust
-
+COPY softlevel /run/openrc/
+COPY reboot.sh /usr/local/sbin/reboot/
+COPY shadowsocks-rust/ssserver /usr/bin/
+COPY supervisord.conf /root/supervisor/
+COPY shadowsocks-rust/config.json /root/shadowsocks-rust/
 RUN <<EOF
 set -eux
 apk update
